@@ -28,7 +28,12 @@ useEffect(()=>{
     // 檢查是否有輸入內容
     if(newTask.trim() === '') return;
     // 使用展開運算符 (...) 創建一個新的任務陣列，並加入新任務
-    const updatedTasks= [...tasks, newTask];
+    const newTaskObj = {
+      id: nextId,
+      title: newTask,
+      description: '',
+    };
+    const updatedTasks= [...tasks, newTaskObj];
     // 更新任務列表
     setTasks(updatedTasks);
     // 清空輸入框
@@ -38,12 +43,6 @@ useEffect(()=>{
     localStorage.setItem('tasks', JSON.stringify(updatedTasks)); // 將任務列表保存到 localStorage
   };
 
-const newTaskObj = {
-  id: nextId,
-  title: newTask,
-  description: '',
-};
-const updatedTasks = [...tasks, newTaskObj]; // 將新任務對象添加到任務列表中
 
 
   // 定義刪除任務的函數
