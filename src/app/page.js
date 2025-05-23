@@ -46,8 +46,8 @@ useEffect(()=>{
 
 
   // 定義刪除任務的函數
-  const handleDelete = (index)=>{
-    const newTasks = tasks.filter((_, i) => i !== index);
+  const handleDelete = (deletedId)=>{
+    const newTasks = tasks.filter((task) => task.id !== deletedId);
     setTasks(newTasks);
     localStorage.setItem('tasks', JSON.stringify(newTasks)); // 將更新後的任務列表保存到 localStorage
   }
